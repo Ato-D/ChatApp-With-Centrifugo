@@ -1,4 +1,4 @@
-package com.example.Centrifugo;
+package com.example.Centrifugo.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
