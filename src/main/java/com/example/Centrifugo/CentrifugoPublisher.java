@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.HashSet;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 

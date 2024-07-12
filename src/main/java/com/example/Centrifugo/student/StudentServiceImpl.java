@@ -114,13 +114,16 @@ public class StudentServiceImpl implements StudentService{
         ResponseDTO respose;
 
         try {
+            log.info("StudentDto {}",studentDto);
             var student = Student.builder()
                     .firstName(studentDto.getFirstName())
                     .lastName(studentDto.getLastName())
                     .email(studentDto.getEmail())
                     .build();
+            log.info("StudentDto {}",student);
             var record = studentRepository.save(student);
             centrifugoPublisher.sendImmobilizationToCentrifugo(record, "save");
+            log.info("student {},record{}",student,record);
 
             log.info("Success! statusCode -> {} and Message -> {}", HttpStatus.CREATED, record);
             respose = getResponseDTO("Record Saved Successfully", HttpStatus.OK, record);
