@@ -25,7 +25,7 @@ public class MessageController {
     }
 
 
-    @GetMapping({"/recipientId"})
+    @GetMapping("/{recipientId}")
     public ResponseEntity<ResponseDTO> receiveMessages(@PathVariable UUID recipientId) {
         return messageService.getMessages(recipientId);
     }

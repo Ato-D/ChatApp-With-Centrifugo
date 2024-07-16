@@ -27,6 +27,17 @@ public class MessageServiceImpl implements MessageService{
 
     private final MessageRepository messageRepository;
     private final CentrifugoPublisher centrifugoPublisher;
+
+    /**
+     * Sends a message using the provided MessageDTO.
+     *
+     * This method attempts to save the message to the database using MessageRepository.
+     * If successful, it publishes the message to Centrifugo using CentrifugoPublisher.
+     * Handles specific exceptions with appropriate status codes and logs relevant information.
+     *
+     * @param messageDTO The MessageDTO containing senderId, receiverId, and message to be saved and sent.
+     * @return ResponseEntity containing a ResponseDTO with the status and details of the saved message.
+     */
     @Override
     public ResponseEntity<ResponseDTO> sendMessage(MessageDTO messageDTO) {
         log.info("Inside the Send Message Method ::: Trying to send a message");
@@ -60,6 +71,16 @@ public class MessageServiceImpl implements MessageService{
         return new ResponseEntity<>(respose, HttpStatus.valueOf(respose.getStatusCode()));
     }
 
+    /**
+     * Retrieves messages by recipient ID.
+     *
+     * This method attempts to retrieve messages from the repository based on the provided recipient ID.
+     * If messages are found, they are converted into MessageDTO objects and returned with a success status.
+     * Handles known exceptions with specific status codes and logs relevant information.
+     *
+     * @param recipientId The UUID of the recipient whose messages are to be retrieved.
+     * @return ResponseEntity containing a ResponseDTO with the status and messages retrieved.
+     */
     @Override
     public ResponseEntity<ResponseDTO> getMessages(UUID recipientId) {
         log.info("Inside find Get Messages by Id ::: Trying to Get Messages By Their Recipient id -> {}", recipientId);
@@ -67,7 +88,7 @@ public class MessageServiceImpl implements MessageService{
 
         try {
             List<MessageEntity> messageEntities;
-            messageEntities = messageRepository.findByRecipentId(recipientId);
+            messageEntities = messageRepository.findByRecipientId(recipientId);
             if (!messageEntities.isEmpty()) {
                 log.info("Success! statusCode -> {} and Message -> {}", HttpStatus.OK, messageEntities);
                 List<MessageDTO> messageDTOS = messageEntities.stream()

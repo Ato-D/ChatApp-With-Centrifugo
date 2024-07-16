@@ -9,6 +9,6 @@ import java.util.UUID;
 
 public interface MessageRepository extends JpaRepository<MessageEntity, UUID> {
 
-    @Query(nativeQuery = true, value = "SELECT * FROM MessageEntity WHERE receiverId = :receiverId")
-    List<MessageEntity> findByRecipentId(@Param("receiverId") UUID receiverId);
+    @Query(nativeQuery = true, value = "SELECT * FROM Message_Table WHERE receiver_id = :receiverId")
+    List<MessageEntity> findByRecipientId(@Param("receiverId") UUID receiverId);
 }
