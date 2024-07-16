@@ -21,14 +21,14 @@ spring:
 
 
 centrifugo:
-  api-key: 65bcc0d4-3d68-455c-b6c1-168c8f20eb27
+  api-key: d7627bb6-2292-4911-82e1-615c0ed3eebb
   channel1: save
   channel2: channel2
   channel3: channel3
 #  deviceSummary: device-stat
   channel4: something2
   method: publish
-  secret: DA8FD7E9A9F5DC952F03C6EBDC37BD91F39B28635722AC978438287CB929DB34D90B34A7F1421612181CC652932771A7F037A829C0B596BF7B8CE5528278783C
+  secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiItaCIsImV4cCI6MTcyMTQwMjYyNCwiaWF0IjoxNzIwNzk3ODI0fQ.IeQG7hUifXhHaH7yUBukCAJ_iexfstR83w25kNwqMQE
   url: http://localhost:8000
   websocket: ws://localhost:8000/connection/websocket
 #  wss://smpp.stlghana.com/connection/websocket

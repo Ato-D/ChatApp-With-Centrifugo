@@ -120,10 +120,8 @@ public class StudentServiceImpl implements StudentService{
                     .lastName(studentDto.getLastName())
                     .email(studentDto.getEmail())
                     .build();
-            log.info("StudentDto {}",student);
             var record = studentRepository.save(student);
             centrifugoPublisher.sendImmobilizationToCentrifugo(record, "save");
-            log.info("student {},record{}",student,record);
 
             log.info("Success! statusCode -> {} and Message -> {}", HttpStatus.CREATED, record);
             respose = getResponseDTO("Record Saved Successfully", HttpStatus.OK, record);
@@ -228,7 +226,7 @@ public class StudentServiceImpl implements StudentService{
     private StudentDto mapToStudentDto(Student student) {
 
         StudentDto studentDto = StudentDto.builder()
-                .id(student.getId())
+//                .id(student.getId())
                 .firstName(student.getFirstName())
                 .lastName(student.getLastName())
                 .email(student.getEmail())
