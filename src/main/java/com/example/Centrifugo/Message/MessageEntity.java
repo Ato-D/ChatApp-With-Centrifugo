@@ -22,7 +22,7 @@ public class MessageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    private String message;
+    private String content;
     @Column(name = "sender_Id")
     private UUID senderId;
     @Column(name = "receiver_Id")

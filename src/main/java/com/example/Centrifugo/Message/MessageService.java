@@ -10,5 +10,7 @@ public interface MessageService {
 
     public ResponseEntity<ResponseDTO> sendMessage(MessageDTO messageDTO);
 
-    public ResponseEntity<ResponseDTO> getMessages(UUID id);
+    public ResponseEntity<ResponseDTO> getMessgesForUser(UUID receiverId);
+
+    public ResponseEntity<ResponseDTO> getConversation(UUID userId1, UUID userId2);
 }

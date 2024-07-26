@@ -24,9 +24,19 @@ public class MessageController {
         return messageService.sendMessage(messageDTO);
     }
 
-
-    @GetMapping("/{recipientId}")
-    public ResponseEntity<ResponseDTO> receiveMessages(@PathVariable UUID recipientId) {
-        return messageService.getMessages(recipientId);
+    @GetMapping("/inbox/{userId}")
+    public ResponseEntity<ResponseDTO> getMessagesForUser(@PathVariable UUID userId) {
+        return messageService.getMessgesForUser(userId);
     }
+
+    @GetMapping("/conversation")
+    public ResponseEntity<ResponseDTO> getConversation(@RequestParam UUID userId1, @RequestParam UUID userId2) {
+        return messageService.getConversation(userId1, userId2);
+    }
+
+
+//    @GetMapping("/{recipientId}")
+//    public ResponseEntity<ResponseDTO> receiveMessages(@PathVariable UUID recipientId) {
+//        return messageService.getMessages(recipientId);
+//    }
 }

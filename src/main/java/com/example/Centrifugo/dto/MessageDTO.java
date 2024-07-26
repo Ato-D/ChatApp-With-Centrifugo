@@ -16,5 +16,5 @@ public class MessageDTO {
 
     private UUID senderId;
     private UUID receiverId;
-    private String message;
+    private String content;
 }
